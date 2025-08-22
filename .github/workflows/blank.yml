@@ -1,0 +1,54 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # GitHub Actions jobs time out after 6 hours by default. 
+    # Your script's 3-minute retry loop will work well within this limit.
+    timeout-minutes: 360
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+     # Step 1: Checks out your repository's code so the runner can access it.
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      # Step 2: Sets up the specified version of Python.
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      # Step 3: Installs the necessary Python packages.
+      # This step requires a 'requirements.txt' file in your repository.
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Step 4: Runs your Python script.
+      # It securely injects your credentials and settings from GitHub Secrets 
+      # into the script as environment variables.
+      - name: Run Cult.fit Booker
+        env:
+          CULT_API_KEY: ${{ secrets.CULT_API_KEY }}
+          CULT_AT_TOKEN: ${{ secrets.CULT_AT_TOKEN }}
+          CULT_ST_TOKEN: ${{ secrets.CULT_ST_TOKEN }}
+          CENTER_ID: ${{ secrets.CENTER_ID }}
+          PREFERRED_TIME: ${{ secrets.PREFERRED_TIME }}
+          PREFERRED_WORKOUT_NAME: ${{ secrets.PREFERRED_WORKOUT_NAME }}
+          DAYS_IN_ADVANCE: ${{ secrets.DAYS_IN_ADVANCE }}
+        run: python main.py
