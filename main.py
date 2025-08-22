@@ -144,13 +144,16 @@ def main():
     
     # --- Retrieve Credentials ---
     api_key = os.getenv("CULT_API_KEY")
+    
+    print(api_key)
+    
+    '''
     at_token = os.getenv("CULT_AT_TOKEN")
     st_token = os.getenv("CULT_ST_TOKEN")
     center_id = os.getenv("CENTER_ID")
     preferred_time = os.getenv("PREFERRED_TIME")
     workout_name = os.getenv("PREFERRED_WORKOUT_NAME")
     advance = int(os.getenv("DAYS_IN_ADVANCE"))
-    
     try:
         client = CultFitAPIClient(api_key, at_token, st_token)
     except ValueError as e:
@@ -198,6 +201,7 @@ def main():
         time.sleep(180)
 
     logging.info("--- Cult.fit Booking Bot Finished ---")
+    '''
 
 if __name__ == "__main__":
     main()
