@@ -144,8 +144,9 @@ def main():
     
     # --- Retrieve Credentials ---
     api_key = os.getenv("CULT_API_KEY")
-    
+    print("test")
     print(api_key)
+    print("2")
     
     '''
     at_token = os.getenv("CULT_AT_TOKEN")
