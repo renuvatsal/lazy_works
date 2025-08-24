@@ -6,7 +6,7 @@ import time
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from pathlib import Path
-import arg
+import argparse
 
 # Any issues/errors in script?
 # Fix it yourself
