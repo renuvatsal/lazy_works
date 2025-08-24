@@ -144,13 +144,6 @@ def main():
     
     # --- Retrieve Credentials ---
     api_key = os.getenv("CULT_API_KEY")
-    center_id = os.getenv("CENTER_ID")
-    print("test")
-    print(api_key)
-    print(center_id)
-    print("2")
-    
-    '''
     at_token = os.getenv("CULT_AT_TOKEN")
     st_token = os.getenv("CULT_ST_TOKEN")
     center_id = os.getenv("CENTER_ID")
@@ -204,7 +197,6 @@ def main():
         time.sleep(180)
 
     logging.info("--- Cult.fit Booking Bot Finished ---")
-    '''
 
 if __name__ == "__main__":
     main()
