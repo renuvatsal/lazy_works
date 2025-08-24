@@ -1,4 +1,4 @@
-name: Cult.fit Booking Bot
+name: Cult.fit Class Booking
 
 on:
   push:
