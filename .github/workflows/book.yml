@@ -26,4 +26,4 @@ jobs:
 
       - name: Run booking script
         # The script will now use the vatsal.env file from your repository
-        run: python main.py
+        run: python main.py --env_file vatsal.env
