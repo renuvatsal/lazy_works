@@ -6,18 +6,13 @@ import time
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from pathlib import Path
+import arg
 
 # Any issues/errors in script?
 # Fix it yourself
 # --- Configuration ---
 #logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-
-#loading env file
-# This ensures the script finds the.env file even when run from a different directory.
-script_dir = Path(__file__).resolve().parent
-dotenv_path = script_dir / 'vatsal.env'
-load_dotenv(dotenv_path=dotenv_path)
 
 class CultFitAPIClient:
     """
@@ -141,6 +136,17 @@ def main():
     Main execution function for the booking bot with recursive checking.
     """
     logging.info("--- Cult.fit Booking Bot Started ---")
+
+    #Parsing
+    parser = argparse.ArgumentParser(description = "Provide .env file for Cult fit class booking.")
+    parser.add_argument("--env_file", type=str, required=True, help="Find the .env in script DIR")
+    args = parser.parse_args()
+    
+    #loading env file
+    # This ensures the script finds the.env file even when run from a different directory.
+    script_dir = Path(__file__).resolve().parent
+    dotenv_path = script_dir / args.env_file
+    load_dotenv(dotenv_path=dotenv_path)
     
     # --- Retrieve Credentials ---
     api_key = os.getenv("CULT_API_KEY")
