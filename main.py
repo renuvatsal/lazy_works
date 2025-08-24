@@ -144,8 +144,10 @@ def main():
     
     # --- Retrieve Credentials ---
     api_key = os.getenv("CULT_API_KEY")
+    center_id = os.getenv("CENTER_ID")
     print("test")
     print(api_key)
+    print(center_id)
     print("2")
     
     '''
