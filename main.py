@@ -106,7 +106,7 @@ class CultFitAPIClient:
             has_seats = cls.get("availableSeats", 0) > 0
             
             # Ensure the time format in your.env file matches the API (e.g., "19:00:00")
-            matches_time = cls.get("startTime") == time_str
+            matches_time = cls.get("startTime") in time_str
             matches_name = cls.get("workoutName") == workout_name
 
             if is_bookable and has_seats and matches_time and matches_name:
@@ -147,7 +147,8 @@ def main():
     at_token = os.getenv("CULT_AT_TOKEN")
     st_token = os.getenv("CULT_ST_TOKEN")
     center_id = os.getenv("CENTER_ID")
-    preferred_time = os.getenv("PREFERRED_TIME")
+    preferred_time_str = os.getenv("PREFERRED_TIME")
+    preferred_time = [t.strip() for t in preferred_time_str.split(',')]
     workout_name = os.getenv("PREFERRED_WORKOUT_NAME")
     advance = int(os.getenv("DAYS_IN_ADVANCE"))
     try:
