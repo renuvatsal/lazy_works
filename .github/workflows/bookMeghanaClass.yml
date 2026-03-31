@@ -6,7 +6,7 @@ on:
       - main
   workflow_dispatch:
   schedule:
-    - cron: '40 18 * * *'
+    - cron: '2 * * * *'
 jobs:
   run-bot:
     runs-on: ubuntu-latest
