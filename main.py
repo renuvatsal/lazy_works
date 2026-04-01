@@ -178,8 +178,8 @@ def main():
 
         # Case 2: Date is not available yet, and we are booking 4 days in advance. Wait and retry.
         if available_classes is None and advance == 4:
-            logging.info("Booking date not yet available. Retrying in 3 minutes...")
-            time.sleep(180)  # Wait for 3 minutes
+            logging.info("Booking date not yet available. Retrying in a minute...")
+            time.sleep(60)  # Wait for 1 minute
             continue
         
         # Case 3: Date is available, but no classes were found or a network error occurred.
@@ -200,8 +200,8 @@ def main():
             break # Exit if the desired class isn't on the schedule
         
         # Fallback sleep to prevent rapid-fire failed booking attempts if something goes wrong
-        logging.warning("Booking attempt failed. Retrying in 3 minutes...")
-        time.sleep(180)
+        logging.warning("Booking attempt failed. Retrying in a minute...")
+        time.sleep(60)
 
     logging.info("--- Cult.fit Booking Bot Finished ---")
 
