@@ -30,4 +30,3 @@ jobs:
       - name: Push to Docker Hub
         run: |
           docker push renuvatsal/vatsal:0.37.0
-``
