@@ -25,7 +25,7 @@ jobs:
 
       - name: Retag image
         run: |
-          docker tag ghcr.io/fluxcd/flagger-loadtester:0.37.0 renuvatsal/vatsal:0.37.0
+          docker tag ghcr.io/fluxcd/flagger-loadtester:0.37.0 renuvatsal/flagger-loadtester:0.37.0
 
       - name: Push to Docker Hub
         run: |
