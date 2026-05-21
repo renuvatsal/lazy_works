@@ -29,4 +29,4 @@ jobs:
 
       - name: Push to Docker Hub
         run: |
-          docker push renuvatsal/vatsal:0.37.0
+          docker push renuvatsal/flagger-loadtester:0.37.0
